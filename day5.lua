@@ -56,7 +56,10 @@ function part_two(seeds, blocks)
                 local intersection_start = math.max(src_start, val_start)
                 local intersection_end = math.min(src_start + mapping_length, val_end)
                 if intersection_start < intersection_end then
-                    table.insert(new_vals, {intersection_start - src_start + dest_start, intersection_end - src_start + dest_start})
+                    table.insert(
+                        new_vals,
+                        {intersection_start - src_start + dest_start, intersection_end - src_start + dest_start}
+                    )
                     if intersection_start > val_start then
                         table.insert(vals, {val_start, intersection_start})
                     end
@@ -73,10 +76,14 @@ function part_two(seeds, blocks)
         end
         vals = new_vals
     end
-    table.sort(vals, function(a, b) return a[1] < b[1] end)
+    table.sort(
+        vals,
+        function(a, b)
+            return a[1] < b[1]
+        end
+    )
     return vals[1][1]
 end
-
 
 function main()
     local f = io.open("day5input.txt", "r")
